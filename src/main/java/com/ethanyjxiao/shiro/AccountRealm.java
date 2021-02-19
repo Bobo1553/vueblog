@@ -42,9 +42,9 @@ public class AccountRealm extends AuthorizingRealm {
         String userId = jwtUtils.getClaimByToken((String) jwtToken.getPrincipal()).getSubject();
 
         User user = userService.getById(userId);
-        if(user == null){
+        if (user == null) {
             throw new UnknownAccountException("账户不存在");
-        }else if (user.getStatus() == -1){
+        } else if (user.getStatus() == -1) {
             throw new LockedAccountException("账户已被锁定");
         }
 

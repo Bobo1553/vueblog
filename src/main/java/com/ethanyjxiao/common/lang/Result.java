@@ -13,63 +13,36 @@ import java.io.Serializable;
 @Data
 public class Result implements Serializable {
 
-    private String code;
+    private int code;
     private String message;
     private Object data;
 
     public static Result success(Object data) {
-        Result result = new Result();
-        result.setCode("0");
-        result.setData(data);
-        result.setMessage("操作成功！");
-        return result;
+        return success(200, "操作成功", data);
     }
 
-    public static Result success(String message, Object data) {
+    public static Result success(int code, String message, Object data) {
         Result result = new Result();
-        result.setCode("0");
+        result.setCode(code);
         result.setData(data);
         result.setMessage(message);
         return result;
     }
 
     public static Result fail(String message) {
-        Result result = new Result();
-        result.setCode("-1");
-        result.setData(null);
-        result.setMessage(message);
-        return result;
+        return fail(400, message, null);
     }
 
     public static Result fail(String message, Object data) {
+        return fail(400, message, data);
+    }
+
+    public static Result fail(int code, String message, Object data) {
         Result result = new Result();
-        result.setCode("-1");
+        result.setCode(code);
         result.setData(data);
         result.setMessage(message);
         return result;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(Object data) {
-        this.data = data;
-    }
 }

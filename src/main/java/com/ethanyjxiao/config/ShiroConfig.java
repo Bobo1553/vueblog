@@ -55,6 +55,7 @@ public class ShiroConfig {
 
         return securityManager;
     }
+
     @Bean
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
@@ -63,6 +64,7 @@ public class ShiroConfig {
         chainDefinition.addPathDefinitions(filterMap);
         return chainDefinition;
     }
+
     @Bean("shiroFilterFactoryBean")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager,
                                                          ShiroFilterChainDefinition shiroFilterChainDefinition) {
